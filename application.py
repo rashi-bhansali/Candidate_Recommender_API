@@ -2,6 +2,7 @@ from flask import Flask
 from pymongo import MongoClient
 from Helper import Helper
 import pymongo
+import os
 
 
 app = Flask(__name__)
@@ -25,6 +26,6 @@ def build_model():
             for f in resumeList:
                 documents.append(helper.cleanTextAndTokenize(f))
                 helper.create_tfidf(str(key), documents, doc_included)
-    return "Models Created!"
+    return os.getcwd()
 if __name__ == "__main__":
     app.run(debug=True)
